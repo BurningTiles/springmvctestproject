@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Users List</title>
+<link rel="stylesheet" href="/styles/style.css">
+<script src="/js/script.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="grad-bg">
+	<div class="row header">
+		<a href="/home">Back</a> <div>Page Hits : <span id="pageHits"></span></div>
+	</div>
+	<form class="row search" action="#" th:action="@{/users}" method="get">
+		<input id="search" type="text" placeholder="Search" name="search" th:value="${search}">
+		<div><a id="clear" href="/users" hidden><i class="fa fa-times" aria-hidden="true"></i></a></div>
+		<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+	</form>
+	<div class="column">
+		<h3 class="white" th:if="${message!=null}" th:text="${message}"
+		></h3>
+		<h2 class="white" th:if="${users==null || users.size()==0}">No users yet!</h2>
+		<div th:if="${users.size()>0}">
+			<h2 class="white">Users</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Country</th>
+						<th>Education</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user : ${users}">
+						
+						<td th:text="${user.name}"></td>
+						<td th:text="${user.email}"></td>
+						<td th:text="${user.country}"></td>
+						<td th:text="${user.education}"></td>
+						<td>
+						<a th:href="@{/edit/{id}(id=${user.id})}"><i class="fa fa-pencil-square-o"></i></a>
+						<a th:href="@{/delete/{id}(id=${user.id})}"><i class="fa fa-trash"></i>
+						</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Add User</title>
+<link rel="stylesheet" href="/styles/style.css">
+<script src="/js/script.js"></script>
+</head>
+<body>
+	<div class="row header">
+		<a href="/home">Back</a>
+		<div>
+			Page Hits : <span id="pageHits"></span>
+		</div>
+	</div>
+	<h2>Edit user</h2>
+	<form action="#" th:action="@{/edit/{id}(id=${user.id})}" th:object="${user}" method="post" class="add-form">
+		<div>
+			<label for="name">Name</label> <input type="text" th:field="*{name}"
+				id="name" placeholder="Name"> <span class="error"
+				th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+		</div>
+
+		<div>
+			<label for="email">Email</label> <input type="text"
+				th:field="*{email}" id="email" placeholder="Email"> <span
+				class="error" th:if="${#fields.hasErrors('email')}"
+				th:errors="*{email}"></span>
+		</div>
+
+		<div>
+			<label for="country">Country</label> <input type="text"
+				th:field="*{country}" id="country" placeholder="Country">
+		</div>
+
+		<div>
+			<label for="education">Education</label> <input type="text"
+				th:field="*{education}" id="education" placeholder="Education">
+			<span class="error" th:if="${#fields.hasErrors('education')}"
+				th:errors="*{education}"></span>
+		</div>
+
+		<input class="btn" type="submit" value="Update User">
+	</form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>Home Page</title>
+<link rel="stylesheet" href="/styles/style.css">
+<script src="/js/script.js"></script>
+</head>
+<body>
+	<div class="row header">
+		<div></div>
+		<div>
+			Page Hits : <span id="pageHits"></span>
+		</div>
+	</div>
+	<div>
+		<div class="message" th:if="${message!=null}" th:text="${message}"
+		></div>
+		<button class="btn mr" onclick="location.href='/add'">Add User</button>
+		<button class="btn" onclick="location.href='/users'">Users</button>
+	</div>
+</body>
+</html>
